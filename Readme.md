@@ -14,20 +14,20 @@ resulting from the deconvolution.
 
 # Functions
 
-| Function           | Description                                                                                                                                                         | Return                                    |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| CIBERSORT\_abs\_F  | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.     | Deconvolution Graphs and Deconvolution df |
-| CIBERSORT\_abs\_NF | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution. | Deconvolution Graph and df                |
-| CIBERSORT\_rel\_F  | Function that generates the relative deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.     | Deconvolution Graphs and Deconvolution df |
-| CIBERSORT\_rel\_NF | Function that generates the relative deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution. | Deconvolution Graph and df                |
-| EPIC\_rel\_F       | Function that generates the relative deconvolution plot with the EPIC method, with the fractional plot, and returns a df resulting from the deconvolution.          | Deconvolution Graphs and Deconvolution df |
-| EPIC\_rel\_NF      | Function that generates the relative deconvolution plot with the EPIC method, with the non-fractional plot, and returns a df resulting from the deconvolution.      | Deconvolution Graph and df                |
-| FARDEEP\_abs\_F    | Function that generates the absolute deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.       | Deconvolution Graphs and Deconvolution df |
-| FARDEEP\_abs\_NF   | Function that generates the absolute deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.   | Deconvolution Graph and df                |
-| FARDEEP\_rel\_F    | Function that generates the relative deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.       | Deconvolution Graphs and Deconvolution df |
-| FARDEEP\_rel\_NF   | Function that generates the relative deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.   | Deconvolution Graph and df                |
-| Deconv             | Function that generates massive deconvolution plots with the CIBERSORT, EPIC and FARDEEP methods, and returns a list of df’s resulting from the deconvolutions.     | Deconvolution Graphs and df’s list        |
-| Box\_Deconv        | Function that generates a boxplot comparing two conditions for each cell type from a df and a condition vector.                                                     | Deconvolution Boxplot                     |
+| Function           | Description                                                                                                                                                                                             | Return                                    |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| CIBERSORT\_abs\_F  | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.                                         | Deconvolution Graphs and Deconvolution df |
+| CIBERSORT\_abs\_NF | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution.                                     | Deconvolution Graph and df                |
+| CIBERSORT\_rel\_F  | Function that generates the relative deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.                                         | Deconvolution Graphs and Deconvolution df |
+| CIBERSORT\_rel\_NF | Function that generates the relative deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution.                                     | Deconvolution Graph and df                |
+| EPIC\_rel\_F       | Function that generates the relative deconvolution plot with the EPIC method, with the fractional plot, and returns a df resulting from the deconvolution.                                              | Deconvolution Graphs and Deconvolution df |
+| EPIC\_rel\_NF      | Function that generates the relative deconvolution plot with the EPIC method, with the non-fractional plot, and returns a df resulting from the deconvolution.                                          | Deconvolution Graph and df                |
+| FARDEEP\_abs\_F    | Function that generates the absolute deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.                                           | Deconvolution Graphs and Deconvolution df |
+| FARDEEP\_abs\_NF   | Function that generates the absolute deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.                                       | Deconvolution Graph and df                |
+| FARDEEP\_rel\_F    | Function that generates the relative deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.                                           | Deconvolution Graphs and Deconvolution df |
+| FARDEEP\_rel\_NF   | Function that generates the relative deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.                                       | Deconvolution Graph and df                |
+| Deconv             | Function that generates massive deconvolution plots with the CIBERSORT, EPIC and FARDEEP methods, and returns a list of df’s resulting from the deconvolutions.                                         | Deconvolution Graphs and df’s list        |
+| Box\_Deconv        | Function that generates a boxplot comparing conditions for each cell type from a df and a condition vector, and in the case of more than two conditions, it also returns a df with P.Value information. | Deconvolution Boxplot                     |
 
 # Installation
 
@@ -97,7 +97,7 @@ C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-A
 ### Return:
 
 ![Image
-text](Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
+text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -128,7 +128,7 @@ C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-AB
 
 ### Return:
 
-![Image text](Images/C_rel_fraccions.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fraccions.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -158,7 +158,7 @@ L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune
 
 ### Return
 
-![Image text](Images/Example_Deconv.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/Example_Deconv.png)
 
 ``` r
 # l_df <- list(C_rel, E_rel, F_rel)
@@ -235,11 +235,11 @@ P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nid
 
 #### With 2 conditions
 
-![Image text](Images/test_1.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/test_1.png)
 
 #### With more than 2 conditions
 
-![Image text](Images/test_2.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/test_2.png)
 
 ``` r
 knitr::kable(anno_df)

@@ -22,7 +22,7 @@ The Deconvolution package contains different functions, specific to generate abs
 | FARDEEP_rel_F    | Function that generates the relative deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.       | Deconvolution Graphs and Deconvolution df |
 | FARDEEP_rel_NF   | Function that generates the relative deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.   | Deconvolution Graph and df                |
 | Deconv           | Function that generates massive deconvolution plots with the CIBERSORT, EPIC and FARDEEP methods, and returns a list of df's resulting from the deconvolutions.     | Deconvolution Graphs and df's list        |
-| Box_Deconv       | Function that generates a boxplot comparing two conditions for each cell type from a df and a condition vector.                                                     | Deconvolution Boxplot                     |
+| Box_Deconv       | Function that generates a boxplot comparing conditions for each cell type from a df and a condition vector, and in the case of more than two conditions, it also returns a df with P.Value information.                                                     | Deconvolution Boxplot                     |
 
 # Installation
 
