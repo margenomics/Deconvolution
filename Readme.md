@@ -97,7 +97,7 @@ C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-A
 ### Return:
 
 ![Image
-text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
+text](Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
