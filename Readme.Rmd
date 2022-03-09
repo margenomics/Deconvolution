@@ -1,0 +1,154 @@
+---
+title: "Readme"
+output: github_document
+---
+
+# Introduction
+
+The Deconvolution package contains different functions, specific to generate absolute or relative deconvolution plots, with different methods, which also return data frames with the result of the deconvolution, or a list with data frames in the case of the deconv function, these df can then be used with another function of the package, the Box_Deconv function to generate a boxplot that compares two conditions in the different cell types, and does so from the df resulting from the deconvolution. 
+
+# Functions
+
+| Function         | Description                                                                                                                                                         | Return                                    |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| CIBERSORT_abs_F  | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.     | Deconvolution Graphs and Deconvolution df |
+| CIBERSORT_abs_NF | Function that generates the absolute deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution. | Deconvolution Graph and df                |
+| CIBERSORT_rel_F  | Function that generates the relative deconvolution plot with the CIBERSORT method, with the fractional plot, and returns a df resulting from the deconvolution.     | Deconvolution Graphs and Deconvolution df |
+| CIBERSORT_rel_NF | Function that generates the relative deconvolution plot with the CIBERSORT method, with the non-fractional plot, and returns a df resulting from the deconvolution. | Deconvolution Graph and df                |
+| EPIC_rel_F       | Function that generates the relative deconvolution plot with the EPIC method, with the fractional plot, and returns a df resulting from the deconvolution.          | Deconvolution Graphs and Deconvolution df |
+| EPIC_rel_NF      | Function that generates the relative deconvolution plot with the EPIC method, with the non-fractional plot, and returns a df resulting from the deconvolution.      | Deconvolution Graph and df                |
+| FARDEEP_abs_F    | Function that generates the absolute deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.       | Deconvolution Graphs and Deconvolution df |
+| FARDEEP_abs_NF   | Function that generates the absolute deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.   | Deconvolution Graph and df                |
+| FARDEEP_rel_F    | Function that generates the relative deconvolution plot with the FARDEEP method, with the fractional plot, and returns a df resulting from the deconvolution.       | Deconvolution Graphs and Deconvolution df |
+| FARDEEP_rel_NF   | Function that generates the relative deconvolution plot with the FARDEEP method, with the non-fractional plot, and returns a df resulting from the deconvolution.   | Deconvolution Graph and df                |
+| Deconv           | Function that generates massive deconvolution plots with the CIBERSORT, EPIC and FARDEEP methods, and returns a list of df's resulting from the deconvolutions.     | Deconvolution Graphs and df's list        |
+| Box_Deconv       | Function that generates a boxplot comparing two conditions for each cell type from a df and a condition vector.                                                     | Deconvolution Boxplot                     |
+
+# Installation
+
+```R
+library(devtools)
+devtools::install_github("margenomics/Deconvolution")
+library(Deconvolution)
+```
+
+#  Usage
+
+```R
+# CIBERSORT_abs_F
+  C_abs <- CIBERSORT_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name, "MONACO")
+
+# CIBERSORT_abs_NF
+  C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# CIBERSORT_rel_F
+  C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# CIBERSORT_rel_NF
+  C_rel <- CIBERSORT_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# EPIC_rel_F
+  E_rel <- EPIC_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# EPIC_rel_NF
+  E_rel <- EPIC_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# FARDEEP_abs_F
+  F_abs <- FARDEEP_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# FARDEEP_abs_NF
+  F_abs <- FARDEEP_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# FARDEEP_rel_F
+  F_rel <- FARDEEP_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# FARDEEP_rel_NF
+  F_rel <- FARDEEP_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# Deconv
+  L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", "ALL", "rel", fraccionate.samples=TRUE, fractions= f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+
+# Box_deconv
+  P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", f_name= "Box_CIBERSORT_abs")
+```
+
+# Examples
+
+```R
+matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
+sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+fractions <- c(rep("A", each=18), rep("B", each=43), rep("C", each=36))
+results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
+```
+
+## CIBERSORT_abs_NF
+
+### Itroduce:
+
+```R
+C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test")
+```
+
+### Return:
+
+![Image text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
+```{r, include=FALSE}
+source("CIBERSORT.R")
+matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
+sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
+res_ciber = CIBERSORT(sig_matrix=sig.matrix,
+                        mixture_file = matrix,
+                        QN = F,perm=100,absolute = T,abs_method='no.sumto1')
+  res_ciber = as.data.frame(t(res_ciber))
+  res_ciber$cell_type=rownames(res_ciber)
+  C_abs <- res_ciber[1:(length(rownames(res_ciber))-4),]
+```
+```{r}
+# Show the first 6 columns of the deconvolution df.
+knitr::kable(C_abs[,1:6 ])
+```
+
+## CIBERSORT_rel_F
+
+### Itroduce:
+
+```R
+C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+```
+
+### Return:
+
+![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fraccions.png)
+
+```{r, include=FALSE}
+source("CIBERSORT.R")
+matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
+sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
+res_ciber = CIBERSORT(sig_matrix=sig.matrix,
+                        mixture_file = matrix,
+                        QN = F,perm=100)
+  res_ciber = as.data.frame(t(res_ciber))
+  res_ciber$cell_type=rownames(res_ciber)
+  C_res <- res_ciber[1:(length(rownames(res_ciber))-4),]
+```
+```{r}
+# Show the first 6 columns of the deconvolution df.
+knitr::kable(C_res[,1:6 ])
+```
+
+## Deconv
+
+### Introduce
+
+```R
+L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", "ALL", "rel", fraccionate.samples=FALSE, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test")
+```
+### Return
+
+![Image text](/bicoh/nidia/Deconvolution/Images/Example_Deconv.png)
+
+```{r, include=FALSE}
+
+```
