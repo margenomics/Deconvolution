@@ -131,11 +131,11 @@ res_ciber = CIBERSORT(sig_matrix=sig.matrix,
                         QN = F,perm=100)
   res_ciber = as.data.frame(t(res_ciber))
   res_ciber$cell_type=rownames(res_ciber)
-  C_res <- res_ciber[1:(length(rownames(res_ciber))-4),]
+  C_rel <- res_ciber[1:(length(rownames(res_ciber))-4),]
 ```
 ```{r}
 # Show the first 6 columns of the deconvolution df.
-knitr::kable(C_res[,1:6 ])
+knitr::kable(C_rel[,1:6 ])
 ```
 
 ## Deconv
@@ -150,5 +150,96 @@ L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune
 ![Image text](/bicoh/nidia/Deconvolution/Images/Example_Deconv.png)
 
 ```{r, include=FALSE}
+require(EPIC)
+require(usethis)
+require(devtools)
+require(gplots)
+require(data.table)
+require(ggplot2)
+require(dplyr)
+require(tidyr)
+require(immunedeconv)
+require(RColorBrewer)
+require(FARDEEP)
+cpm=read.table(matrix,sep = "\t",header = T)
 
+    cpm <- cpm %>%
+      group_by(Gene.symbol) %>%
+      summarise_all(mean)
+    names <- cpm$Gene.symbol
+    cpm=as.matrix(cpm[,-1])
+    rownames(cpm)=names
+
+  # Llegeix la matriu signature en txt i posa els rownames amb els noms de la columna de gens, 3 possibles noms
+  sig.mtrx=read.table(sig.matrix,sep = "\t",header = T)
+  
+    sig.mtrx <- sig.mtrx %>%
+      group_by(Gene.Symbol) %>%
+      summarise_all(mean)
+    names <- sig.mtrx$Gene.Symbol
+    sig.mtrx=as.matrix(sig.mtrx[,-1])
+    rownames(sig.mtrx)=names
+
+  # Creació de la llista de gens i la matriu signature i generació de la matriu de deconvolució i conversió d'aquesta a df
+  C_EPIC <- list()
+  C_EPIC[["sigGenes"]] <- rownames(sig.mtrx)
+  C_EPIC[["refProfiles"]] <- as.matrix(sig.mtrx)
+
+  RESULTS <- t(EPIC::EPIC(bulk=cpm, reference=C_EPIC, withOtherCells=TRUE, scaleExprs=FALSE)$cellFractions) #scaleExprs=TRUE by default: only keep genes in common between matrices
+
+  RESULTS <- as.data.frame(RESULTS)
+  RESULTS$cell_type=rownames(RESULTS)
+  E_rel <- RESULTS
+  
+  # Construcció de la matriu de deconvolució relativa i conversió d'aquesta en un dataframe
+  RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = TRUE, permn = 10, QN = FALSE)$relative.beta)
+  #RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = TRUE, permn = 10, QN = FALSE)$relative.beta)
+
+  RESULTS <- as.data.frame(RESULTS)
+  RESULTS$cell_type=rownames(RESULTS)
+  F_rel <- RESULTS
+  
+  l_df <- list(C_rel, E_rel, F_rel)
+```
+```{r}
+# l_df <- list(C_rel, E_rel, F_rel)
+knitr::kable(l_df)
+```
+
+## Box_Deconv
+
+### Introduce
+
+```R
+P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test")
+```
+### Return
+
+#### With 2 conditions
+
+![Image text](/bicoh/nidia/Deconvolution/Images/test_1.png)
+
+#### With more than 2 conditions
+
+![Image text](/bicoh/nidia/Deconvolution/Images/test_2.png)
+```{r, include=FALSE}
+require(ggplot2)
+require(ggpubr)
+require(gplots)
+require(data.table)
+require(ggsignif)
+require(tidyverse)
+fractions <- c(rep("A", each=18), rep("B", each=43), rep("C", each=36))
+data <- C_abs
+cond <- fractions
+data$cell_type <- NULL
+data <- t(data)
+test_m <- melt(as.data.table(data), variable.factor = FALSE)
+condition <- c(rep(cond, times=length(colnames(data))))
+df_m <- cbind(test_m, condition)
+
+anno_df = compare_means(value ~ condition, group.by = "variable", data = df_m, method = "t.test")
+```
+```{r}
+knitr::kable(anno_df)
 ```
