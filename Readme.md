@@ -129,7 +129,7 @@ C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020
 ### Return:
 
 ![Image
-text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Wang2020_signature.matrix__plot.png)
+text](/Images/CIBERSORT.abs_Wang2020_signature.matrix__plot.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -157,7 +157,7 @@ C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_
 
 ### Return:
 
-![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fractions.png)
+![Image text](/Images/C_rel_fractions.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -184,7 +184,7 @@ L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature
 
 ### Return
 
-![Image text](/bicoh/nidia/Deconvolution/Images/Ex_deconv.png)
+![Image text](/Images/Ex_deconv.png)
 
 ``` r
 # l_df <- list(C_rel, E_rel, F_rel)
@@ -243,7 +243,7 @@ P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nid
 If the samples have two conditions, the function returns a graph with
 the P.Value of the conditions for each cell type in the graph.
 
-![Image text](/bicoh/nidia/Deconvolution/Images/2_cond_ex.png)
+![Image text](/Images/2_cond_ex.png)
 
 #### With more than 2 conditions
 
@@ -253,7 +253,7 @@ P.Value for each cell type is displayed as a message, since the function
 returns a df containing information of the P.value’s and the
 significance level of the conditions per cell type.
 
-![Image text](/bicoh/nidia/Deconvolution/Images/3_cond_ex.png)
+![Image text](/Images/3_cond_ex.png)
 
 ``` r
 knitr::kable(anno_df)
