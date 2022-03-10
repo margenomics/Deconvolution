@@ -58,49 +58,49 @@ library(Deconvolution)
 
 ``` r
 # CIBERSORT_abs_F
-  C_abs <- CIBERSORT_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name, "MONACO")
+  C_abs <- CIBERSORT_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name, "MONACO")
 
 # CIBERSORT_abs_NF
-  C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # CIBERSORT_rel_F
-  C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # CIBERSORT_rel_NF
-  C_rel <- CIBERSORT_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  C_rel <- CIBERSORT_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # EPIC_rel_F
-  E_rel <- EPIC_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  E_rel <- EPIC_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # EPIC_rel_NF
-  E_rel <- EPIC_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  E_rel <- EPIC_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # FARDEEP_abs_F
-  F_abs <- FARDEEP_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  F_abs <- FARDEEP_abs_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # FARDEEP_abs_NF
-  F_abs <- FARDEEP_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  F_abs <- FARDEEP_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # FARDEEP_rel_F
-  F_rel <- FARDEEP_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  F_rel <- FARDEEP_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # FARDEEP_rel_NF
-  F_rel <- FARDEEP_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  F_rel <- FARDEEP_rel_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # Deconv
-  L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", "ALL", "rel", fraccionate.samples=TRUE, fractions= f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+  L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", "ALL", "rel", fraccionate.samples=TRUE, fractions= f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 
 # Box_deconv
-  P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", f_name= "Box_CIBERSORT_abs")
+  P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nidia/Deconv/Brain/test", f_name= "Box_CIBERSORT_abs")
 ```
 
 # Examples
 
 ``` r
 matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
-sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+sig.matrix <- "Wang2020_signature.matrix.txt"
 fractions <- c(rep("A", each=18), rep("B", each=43), rep("C", each=36))
-results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
+results_dir <- "/bicoh/nidia/Deconv/Brain/test"
 ```
 
 ## CIBERSORT\_abs\_NF
@@ -108,7 +108,7 @@ results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
 ### Itroduce:
 
 ``` r
-C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test")
+C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", results_dir = "/bicoh/nidia/Deconv/Brain/test")
 ```
 
 ### Return:
@@ -135,7 +135,7 @@ knitr::kable(C_abs[,1:6 ])
 ### Itroduce:
 
 ``` r
-C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test", height= 8, name= "MONACO")
+C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", f, results_dir = "/bicoh/nidia/Deconv/Brain/test", height= 8, name= "MONACO")
 ```
 
 ### Return:
@@ -160,7 +160,7 @@ knitr::kable(C_rel[,1:6 ])
 ### Introduce
 
 ``` r
-L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune11_Microarray.txt", "ALL", "rel", fraccionate.samples=FALSE, results_dir = "/bicoh/nidia/Deconv/Brain_MMartin/test")
+L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Wang2020_signature.matrix.txt", "ALL", "rel", fraccionate.samples=FALSE, results_dir = "/bicoh/nidia/Deconv/Brain/test")
 ```
 
 ### Return
