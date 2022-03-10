@@ -1,11 +1,28 @@
 ---
 title: "Readme"
+author: "Nidia Barco Armengol"
 output: github_document
 ---
 
 # Introduction
 
 The Deconvolution package contains different functions, specific to generate absolute or relative deconvolution plots, with different methods, which also return data frames with the result of the deconvolution, or a list with data frames in the case of the deconv function, these df can then be used with another function of the package, the Box_Deconv function to generate a boxplot that compares two conditions in the different cell types, and does so from the df resulting from the deconvolution. 
+
+# Methods
+
+| Deconvolution method                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CIBERSORT                                                      | Versatile computational method for quantifying cell fractions from bulk tissue gene expression profiles (GEPs). Combining support vector regression with prior knowledge of expression profiles from purified leukocyte subsets,this methode can accurately estimate the immune composition of a tumor biopsy.                                                                                                                                      |
+| EPIC (Estimating the Proportions of Immune and Cancer cells)   | includes RNA-seq-based gene expression reference profiles from immune cells and other nonmalignant cell types found in tumors, can additionally manage user-defined gene expression reference profiles, include the ability to account for an uncharacterized cell type.                                                                                                                                                                            |
+| FARDEEP (Fast And Robust DEconvolution of Expression Profiles) | This methode enumerate immune cell subsets from whole tumor tissue samples. To reduce noise in the tumor gene expression datasets, utilizes an adaptive least trimmed square to automatically detect and remove outliers before estimating the cell compositions. We show that FARDEEP is less susceptible to outliers and returns a better estimation of coefficients than the existing methods with both numerical simulations and real datasets. |
+
+# Signature matrix
+
+| Signature matrix                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| LM22                            | Is a signature matrix file consisting of 547 genes that accurately distinguish 22 mature human hematopoietic populations isolated from peripheral blood or in vitro culture conditions, including seven T cell types, naïve and memory B cells, plasma cells, NK cells, and myeloid subsets.                                                                                                                                                                                                              |
+| Monaco-ABIS_Immune11_Microarray | This matrix was constructed from a set of predictor variables (cell types), normalized by mRNA abundance with scaling factors, and filtered by extracting genes with very high or very low expression and also genes not expressed with the STAR method, including eleven cell tipes, T.Naive, T.Memory, B.Naive, B.Memory, Plasmablasts, NK, pDCs, Neutrophils.LD, Basophils.LD, mDCs, Monocytes.                                                                                                        |
+| Wang2020_signature.matrix       | To construct the signature matrix of brain data, adult scRNA-seq data from Darmanis et al. (2015) were analyzed by grouping characterized human brain cells into seven cell types [astrocytes, endothelia, microglia, oligodendrocytes (Oligo), oligodendrocyte precursor cells (OPCs), inhibitory and excitatory neurons] and selecting the top 50 marker genes for each cell type using SC3 (Kiselev et al., 2017). Finally, the expression of each marker gene in cells of the same type was averaged. |
 
 # Functions
 
@@ -91,11 +108,11 @@ C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-A
 
 ### Return:
 
-![Image text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Monaco-ABIS_Immune11_Microarray_plot.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Wang2020_signature.matrix__plot.png)
 ```{r, include=FALSE}
 source("CIBERSORT.R")
 matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
-sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+sig.matrix <- "Wang2020_signature.matrix.txt"
 results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
 res_ciber = CIBERSORT(sig_matrix=sig.matrix,
                         mixture_file = matrix,
@@ -119,12 +136,12 @@ C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-AB
 
 ### Return:
 
-![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fraccions.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fractions.png)
 
 ```{r, include=FALSE}
 source("CIBERSORT.R")
 matrix <- "Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt"
-sig.matrix <- "Monaco-ABIS_Immune11_Microarray.txt"
+sig.matrix <- "Wang2020_signature.matrix.txt"
 results_dir <- "/bicoh/nidia/Deconv/Brain_MMartin/test"
 res_ciber = CIBERSORT(sig_matrix=sig.matrix,
                         mixture_file = matrix,
@@ -147,7 +164,7 @@ L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune
 ```
 ### Return
 
-![Image text](/bicoh/nidia/Deconvolution/Images/Example_Deconv.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/Ex_Deconv.png)
 
 ```{r, include=FALSE}
 require(EPIC)
@@ -174,9 +191,9 @@ cpm=read.table(matrix,sep = "\t",header = T)
   sig.mtrx=read.table(sig.matrix,sep = "\t",header = T)
   
     sig.mtrx <- sig.mtrx %>%
-      group_by(Gene.Symbol) %>%
+      group_by(Gene.symbol) %>%
       summarise_all(mean)
-    names <- sig.mtrx$Gene.Symbol
+    names <- sig.mtrx$Gene.symbol
     sig.mtrx=as.matrix(sig.mtrx[,-1])
     rownames(sig.mtrx)=names
 
@@ -217,11 +234,11 @@ P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nid
 
 #### With 2 conditions
 
-![Image text](/bicoh/nidia/Deconvolution/Images/test_1.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/2_cond_ex.png)
 
 #### With more than 2 conditions
 
-![Image text](/bicoh/nidia/Deconvolution/Images/test_2.png)
+![Image text](/bicoh/nidia/Deconvolution/Images/3_cond_ex.png)
 ```{r, include=FALSE}
 require(ggplot2)
 require(ggpubr)
@@ -243,3 +260,23 @@ anno_df = compare_means(value ~ condition, group.by = "variable", data = df_m, m
 ```{r}
 knitr::kable(anno_df)
 ```
+
+# References
+
+Hao, Y., Yan, M., Heath, B. R., Lei, Y. L., & Xie, Y. (2019). Fast and robust deconvolution of tumor infiltrating lymphocyte from expression profiles using least trimmed squares. PLoS computational biology, 15(5), e1006976. https://doi.org/10.1371/journal.pcbi.1006976
+
+Chen, B., Khodadoust, M. S., Liu, C. L., Newman, A. M., & Alizadeh, A. A. (2018). Profiling Tumor Infiltrating Immune Cells with CIBERSORT. Methods in molecular biology (Clifton, N.J.), 1711, 243–259. https://doi.org/10.1007/978-1-4939-7493-1_12
+
+Racle, J., & Gfeller, D. (2020). EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. Methods in molecular biology (Clifton, N.J.), 2120, 233–248. https://doi.org/10.1007/978-1-0716-0327-7_17
+
+Avila Cobos, F., Alquicira-Hernandez, J., Powell, J.E. et al. Benchmarking of cell type deconvolution pipelines for transcriptomics data. Nat Commun 11, 5650 (2020). https://doi.org/10.1038/s41467-020-19015-1
+
+Gregor Sturm, Francesca Finotello, Florent Petitprez, Jitao David Zhang, Jan Baumbach, Wolf H Fridman, Markus List, Tatsiana Aneichyk, Comprehensive evaluation of transcriptome-based cell-type quantification methods for immuno-oncology, Bioinformatics, Volume 35, Issue 14, July 2019, Pages i436–i445, https://doi.org/10.1093/bioinformatics/btz363
+
+Francisco Avila Cobos, Jo Vandesompele, Pieter Mestdagh, Katleen De Preter, Computational deconvolution of transcriptomics data from mixed cell populations, Bioinformatics, Volume 34, Issue 11, 01 June 2018, Pages 1969–1979, https://doi.org/10.1093/bioinformatics/bty019
+
+Finotello, F., Trajanoski, Z. Quantifying tumor-infiltrating immune cells from transcriptomics data. Cancer Immunol Immunother 67, 1031–1040 (2018). https://doi.org/10.1007/s00262-018-2150-z
+
+Monaco, G., Lee, B., Xu, W., Mustafah, S., Hwang, Y. Y., Carré, C., Burdin, N., Visan, L., Ceccarelli, M., Poidinger, M., Zippelius, A., Pedro de Magalhães, J., & Larbi, A. (2019). RNA-Seq Signatures Normalized by mRNA Abundance Allow Absolute Deconvolution of Human Immune Cell Types. Cell reports, 26(6), 1627–1640.e7. https://doi.org/10.1016/j.celrep.2019.01.041
+
+Jiebiao Wang, Bernie Devlin, Kathryn Roeder, Using multiple measurements of tissue to estimate subject- and cell-type-specific gene expression, Bioinformatics, Volume 36, Issue 3, 1 February 2020, Pages 782–788, https://doi.org/10.1093/bioinformatics/btz619
