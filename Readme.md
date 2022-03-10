@@ -114,7 +114,7 @@ C_abs <- CIBERSORT_abs_NF("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-A
 ### Return:
 
 ![Image
-text](/bicoh/nidia/Deconvolution/Images/CIBERSORT.abs_Wang2020_signature.matrix__plot.png)
+text](Images/CIBERSORT.abs_Wang2020_signature.matrix__plot.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -140,7 +140,7 @@ C_rel <- CIBERSORT_rel_F("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-AB
 
 ### Return:
 
-![Image text](/bicoh/nidia/Deconvolution/Images/C_rel_fractions.png)
+![Image text](/Images/C_rel_fractions.png)
 
 ``` r
 # Show the first 6 columns of the deconvolution df.
@@ -165,7 +165,7 @@ L_rel <- deconv("Counts.HUMAN_nodup_Sal_Veh_IPs_INPUTs.txt", "Monaco-ABIS_Immune
 
 ### Return
 
-![Image text](/bicoh/nidia/Deconvolution/Images/Ex_Deconv.png)
+![Image text](/Images/Ex_Deconv.png)
 
 ``` r
 # l_df <- list(C_rel, E_rel, F_rel)
@@ -227,11 +227,11 @@ P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nid
 
 #### With 2 conditions
 
-![Image text](/bicoh/nidia/Deconvolution/Images/2_cond_ex.png)
+![Image text](/Images/2_cond_ex.png)
 
 #### With more than 2 conditions
 
-![Image text](/bicoh/nidia/Deconvolution/Images/3_cond_ex.png)
+![Image text](/3_cond_ex.png)
 
 ``` r
 knitr::kable(anno_df)
