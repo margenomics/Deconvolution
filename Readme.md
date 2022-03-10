@@ -231,7 +231,7 @@ P.value_df <- Box_Deconv(data= C_abs, cond= fractions, results_dir = "/bicoh/nid
 
 #### With more than 2 conditions
 
-![Image text](/3_cond_ex.png)
+![Image text](/Images/3_cond_ex.png)
 
 ``` r
 knitr::kable(anno_df)
